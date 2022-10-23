@@ -7,10 +7,10 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BonusServiceTest {
-    @CsvFileSource(resources = "/data.csv")
+    @CsvFileSource(resources = "/data.csv", numLinesToSkip = 1, delimiter = '|')
     @ParameterizedTest
     @DisplayName("Calculation of bonuses")
-    void shouldCalculateVariants(String reg, String limit, long amount, boolean registered, long expected) {
+    void shouldCalculateVariants(String text, long amount, boolean registered, long expected) {
         BonusService service = new BonusService();
 
         // вызываем целевой метод:
